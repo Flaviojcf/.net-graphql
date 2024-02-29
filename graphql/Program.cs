@@ -18,15 +18,15 @@ namespace graphqlAPI
             builder.Services.AddSwaggerGen();
             builder.Services.AddDbContext<MyDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+            builder.Services.AddGraphQLServer().AddQueryType<Query>()
+                                   .AddProjections()
+                                   .AddFiltering()
+                                   .AddSorting();
+
             var app = builder.Build();
 
-            using (var scope = app.Services.CreateScope())
-            {
-                var services = scope.ServiceProvider;
-                var dbContext = services.GetRequiredService<MyDbContext>();
-                dbContext.Database.Migrate();
-                SeedData.EnsureSeedData(dbContext);
-            }
+            CreateDatabase(app);
+
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -39,10 +39,17 @@ namespace graphqlAPI
 
             app.UseAuthorization();
 
-
-            app.MapControllers();
+            app.MapGraphQL("/graphql");
 
             app.Run();
+
+
+            static void CreateDatabase(WebApplication app)
+            {
+                var serviceScope = app.Services.CreateScope();
+                var dataContext = serviceScope.ServiceProvider.GetService<MyDbContext>();
+                dataContext?.Database.EnsureCreated();
+            }
         }
     }
 }
