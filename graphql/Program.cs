@@ -1,6 +1,5 @@
-using Data;
+using graphqlAPI.Context;
 using Microsoft.EntityFrameworkCore;
-using TransferPay.Data.Context;
 
 namespace graphqlAPI
 {

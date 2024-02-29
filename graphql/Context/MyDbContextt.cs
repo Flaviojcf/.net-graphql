@@ -1,9 +1,8 @@
-﻿using Domain.Models;
-using graphqlAPI.Context.ContextConfiguration;
+﻿using graphqlAPI.Context.ContextConfiguration;
 using graphqlAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace TransferPay.Data.Context
+namespace graphqlAPI.Context
 {
     public class MyDbContext : DbContext
     {

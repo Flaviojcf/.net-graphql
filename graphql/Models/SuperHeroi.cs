@@ -1,8 +1,6 @@
-﻿
-using graphqlAPI.Models;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Domain.Models
+namespace graphqlAPI.Models
 {
     public class SuperHeroi
     {

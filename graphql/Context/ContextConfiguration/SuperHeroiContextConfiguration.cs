@@ -1,4 +1,4 @@
-﻿using Domain.Models;
+﻿using graphqlAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

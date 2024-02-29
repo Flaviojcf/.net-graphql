@@ -1,7 +1,7 @@
-﻿using Domain.Models;
-using TransferPay.Data.Context;
+﻿using graphqlAPI.Context;
+using graphqlAPI.Models;
 
-namespace Data
+namespace graphqlAPI
 {
     public class Query
     {
